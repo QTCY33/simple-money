@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <p>money</p>
+    <Icon name="money" />
   </Layout>
 </template>
 
