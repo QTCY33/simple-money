@@ -1,7 +1,6 @@
 <template>
   <Layout>
     <p>money</p>
-    <Icon name="money" />
   </Layout>
 </template>
 
@@ -14,4 +13,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>
