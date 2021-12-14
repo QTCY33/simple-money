@@ -28,6 +28,11 @@ const routes: Array<RouteConfig> = [
     component: Money,
   },
   {
+    path: "/money",
+    name: "Money",
+    component: Money,
+  },
+  {
     path: "/labels",
     name: "Labels",
     component: Labels,
