@@ -1,17 +1,17 @@
 <template>
-  <div>
-<router-link to="/">记账</router-link>|
-<router-link to="/labels">标签</router-link>|
-<router-link to="/统计">统计</router-link>|
+  <div class="nav">
+    <router-link to="/">记账</router-link>|
+    <router-link to="/labels">标签</router-link>|
+    <router-link to="/statistics">统计</router-link>|
   </div>
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {};
 </script>
 
 <style lang="scss" scoped>
-
+.nav {
+  border: 1px solid red;
+}
 </style>
