@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <Nav></Nav>
-  </div>
+  <Layout>
+    <p>labels</p>
+  </Layout>
 </template>
 
 <script>

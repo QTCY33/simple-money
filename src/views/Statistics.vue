@@ -1,5 +1,7 @@
 <template>
-  <div><Nav></Nav></div>
+  <Layout>
+    <p>statistics</p>
+  </Layout>
 </template>
 
 <script>
