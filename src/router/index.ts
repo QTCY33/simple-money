@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Money from '@/views/Money.vue'
 import Labels from "@/views/Labels.vue";
 import Statistics from "@/views/Statistics.vue";
+import NotFound from '@/views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,7 @@ const routes: Array<RouteConfig> = [
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
   {
-    path: "/money",
+    path: "/",
     name: "Money",
     component: Money,
   },
@@ -35,6 +36,11 @@ const routes: Array<RouteConfig> = [
     path: "/statistics",
     name: "Statistics",
     component: Statistics,
+  },
+  {
+    path: "/*",
+    name: "NotFound",
+    component: NotFound,
   },
 ];
 

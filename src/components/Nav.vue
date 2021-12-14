@@ -1,6 +1,6 @@
 <template>
   <div>
-<router-link to="/money">记账</router-link>|
+<router-link to="/">记账</router-link>|
 <router-link to="/labels">标签</router-link>|
 <router-link to="/统计">统计</router-link>|
   </div>
