@@ -11,10 +11,10 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/helper.scss";
+@import "~@/assets/style/helper.scss";
 nav {
+  @extend %outerShadow;
   display: flex;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   flex-direction: row;
   font-size: 12px;
   > .item {
