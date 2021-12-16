@@ -1,6 +1,6 @@
 <template>
   <div class="numberPad">
-    <div class="output">{{ output || '0'}}</div>
+    <div class="output">{{ output || "0" }}</div>
     <div class="buttons">
       <button @click="inputContent">1</button>
       <button @click="inputContent">2</button>
@@ -49,8 +49,12 @@ export default class NumberPad extends Vue {
   remove() {
     this.output = this.output.slice(0, -1);
   }
-  clear() {}
-  ok() {}
+  clear() {
+    this.output = "0";
+  }
+  ok() {
+    this.$emit("update:value", this.output);
+  }
 }
 </script>
 
