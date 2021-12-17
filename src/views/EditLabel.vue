@@ -1,14 +1,20 @@
 <template>
   <Layout
     ><div class="navBar">
-      <Icon class="left" name="right" /><span class="title">编辑标签</span
+      <Icon class="left" name="right" @click="goBack" /><span class="title"
+        >编辑标签</span
       ><span class="right"></span>
     </div>
     <div class="notes-wrapper">
-      <Notes field-name="标签名" placeholder="请输入标签名" />
+      <Notes
+        :value="tag.name"
+        @update:value="update"
+        field-name="标签名"
+        placeholder="请输入标签名"
+      />
     </div>
     <div class="button-wrapper">
-      <Button>删除标签</Button>
+      <Button @click="remove">删除标签</Button>
     </div>
   </Layout>
 </template>
@@ -19,17 +25,34 @@ import Vue from "vue";
 import { Component } from "vue-property-decorator";
 import Notes from "../components/Money/Notes.vue";
 import Button from "../components/Button.vue";
+
 @Component({ components: { Notes, Button } })
 export default class EditLabel extends Vue {
+  tag?: { id: string; name: string } = undefined;
+
   created() {
     const id = this.$route.params.id;
     tagListModel.fetch();
     const tags = tagListModel.data;
     const tag = tags.filter((t) => t.id === id)[0];
     if (tag) {
+      this.tag = tag;
     } else {
       this.$router.replace("/404");
     }
+  }
+  update(name: string) {
+    if (this.tag) {
+      tagListModel.update(this.tag.id, name);
+    }
+  }
+  remove() {
+    if (this.tag) {
+      tagListModel.remove(this.tag.id);
+    }
+  }
+  goBack() {
+    this.$router.back();
   }
 }
 </script>
