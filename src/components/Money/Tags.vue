@@ -50,16 +50,21 @@ export default class Tags extends Vue {
   padding: 16px;
   display: flex;
   flex-direction: column-reverse;
+  background: white;
   > .current {
     display: flex;
+    flex-direction: column-reverse;
+    
     > li {
       $bg: rgb(192, 185, 185);
       background: $bg;
       height: 24px;
       line-height: 24px;
       border-radius: 12px;
-      padding: 0 16px;
-      margin-right: 16px;
+      flex-direction: row;
+      padding: 0 6px;
+      margin-top: 10px;
+      margin-right: auto;
       &.selected {
         background: darken($color: $bg, $amount: 20%);
         color: white;
