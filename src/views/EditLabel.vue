@@ -1,12 +1,16 @@
 <template>
-  <Layout>标签</Layout>
+  <Layout
+    ><div><Icon class="left" name="right" /><span>编辑标签</span></div>
+    <Notes field-name="标签名" placeholder="请输入标签名"
+  /></Layout>
 </template>
 
 <script lang="ts">
 import tagListModel from "@/models/tagListModel";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
-@Component
+import Notes from "../components/Money/Notes.vue";
+@Component({ components: { Notes } })
 export default class EditLabel extends Vue {
   created() {
     const id = this.$route.params.id;
@@ -14,7 +18,6 @@ export default class EditLabel extends Vue {
     const tags = tagListModel.data;
     const tag = tags.filter((t) => t.id === id)[0];
     if (tag) {
-      console.log(tag);
     } else {
       this.$router.replace("/404");
     }
@@ -22,4 +25,12 @@ export default class EditLabel extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.left {
+  margin-top: 10px;
+  transform: rotate(180deg);
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+}
+</style>
