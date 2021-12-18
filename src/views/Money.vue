@@ -43,9 +43,7 @@ export default class Money extends Vue {
     this.record.amount = parseFloat(value);
   }
   saveRecord() {
-    const deepCloneRecord: RecordItem = recordListModel.clone(this.record);
-    deepCloneRecord.createdAt = new Date();
-    this.recordList.push(deepCloneRecord);
+    recordListModel.create(this.record);
   }
   @Watch("recordList")
   onRecordListChange() {
@@ -59,7 +57,7 @@ export default class Money extends Vue {
   display: flex;
   flex-direction: column-reverse;
 }
-.notes{
-  padding: 5px ;
+.notes {
+  padding: 5px;
 }
 </style>
