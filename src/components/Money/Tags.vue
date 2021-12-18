@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts">
+import store from "@/store/index2";
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 @Component
@@ -30,17 +31,15 @@ export default class Tags extends Vue {
     } else {
       this.selectedTags.push(tag);
     }
-    this.$emit("xxx", this.selectedTags);
+    this.$emit("update:value", this.selectedTags);
   }
   create() {
-    const name = window.prompt("输入标签名");
-    if (name === "") {
-      window.alert("标签名不能为空");
-    } else if (this.dataSource) {
-      this.$emit("update:value", [...this.dataSource, name]);
+      const name = window.prompt('请输入标签名');
+      if (!name) { return window.alert('标签名不能为空'); }
+      store.createTag(name);
     }
   }
-}
+
 </script>
 
 <style lang="scss" scoped>
