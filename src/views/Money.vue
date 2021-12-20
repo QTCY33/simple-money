@@ -22,10 +22,17 @@ import Notes from "@/components/Money/Notes.vue";
 import { Component } from "vue-property-decorator";
 import store from "@/store/index2";
 
-@Component({ components: { NumberPad, Tags, Notes, Types } })
+@Component({
+  components: { NumberPad, Tags, Notes, Types },
+  computed: {
+    recordList() {
+      return store.recordList;
+    },
+  },
+})
 export default class Money extends Vue {
   tags = store.tagList;
-  recordList = store.recordList;
+
   record: RecordItem = { tags: [], notes: "", type: "-", amount: 0 };
   onUpdateTags(value: string[]) {
     this.record.tags = value;

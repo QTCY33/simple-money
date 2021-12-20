@@ -17,13 +17,22 @@
 </template>
 
 <script lang="ts">
-import store from "@/store/index2";
 import Vue from "vue";
+
 import { Component, Prop } from "vue-property-decorator";
-@Component
+@Component({
+  computed: {
+    tagList() {
+      return this.$store.state.tagList;
+    },
+  },
+})
 export default class Tags extends Vue {
   @Prop(Array) dataSource: string[] | undefined;
   selectedTags: string[] = [];
+  created() {
+    this.$store.commit("fetchTags");
+  }
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
     if (index >= 0) {
@@ -34,12 +43,13 @@ export default class Tags extends Vue {
     this.$emit("update:value", this.selectedTags);
   }
   create() {
-      const name = window.prompt('请输入标签名');
-      if (!name) { return window.alert('标签名不能为空'); }
-      store.createTag(name);
+    const name = window.prompt("请输入标签名");
+    if (!name) {
+      return window.alert("标签名不能为空");
     }
+    this.$store.commit("createTag", name);
   }
-
+}
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +63,7 @@ export default class Tags extends Vue {
   > .current {
     display: flex;
     flex-direction: column-reverse;
-    
+
     > li {
       $bg: rgb(192, 185, 185);
       background: $bg;
