@@ -5,7 +5,7 @@
     </div>
     <ul class="current">
       <li
-        v-for="tag in dataSource"
+        v-for="tag in tagList"
         :key="tag.id"
         :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
         @click="toggle(tag)"
@@ -17,14 +17,13 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import TagHelper from "@/mixins/TagHelper";
 @Component
 export default class Tags extends mixins(TagHelper) {
-  @Prop(Array) dataSource: string[] | undefined;
   selectedTags: string[] = [];
+
   get tagList() {
     return this.$store.state.tagList;
   }
@@ -53,18 +52,16 @@ export default class Tags extends mixins(TagHelper) {
   background: white;
   > .current {
     display: flex;
-    flex-direction: column-reverse;
-
+    flex-wrap: wrap;
     > li {
       $bg: rgb(192, 185, 185);
       background: $bg;
       height: 24px;
       line-height: 24px;
       border-radius: 12px;
-      flex-direction: row;
       padding: 0 6px;
       margin-top: 10px;
-      margin-right: auto;
+      margin-right: 12px;
       &.selected {
         background: darken($color: $bg, $amount: 20%);
         color: white;
