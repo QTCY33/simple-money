@@ -43,13 +43,15 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
   saveRecord() {
+    console.log(this.record);
+
     this.$store.commit("createRecord", this.record);
   }
 }
 </script>
 
-<style lang="scss">
-.layout-content {
+<style lang="scss" scoped>
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
