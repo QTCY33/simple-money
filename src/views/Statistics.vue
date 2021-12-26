@@ -19,9 +19,9 @@
         </ol>
       </li>
     </ol>
-  <div v-else>
-  无
-  </div>
+    <div v-else>
+      <Icon class="icon" name="NoContent" />
+    </div>
   </Layout>
 </template>
 
@@ -33,6 +33,7 @@ import recordTypeList from "@/constants/recordTypeList";
 import dayjs from "dayjs";
 import clone from "@/lib/clone";
 @Component({
+  
   components: { Tabs },
 })
 export default class Statistics extends Vue {
@@ -140,5 +141,12 @@ export default class Statistics extends Vue {
   margin-right: auto;
   margin-left: 16px;
   color: #999;
+}
+
+.icon {
+  font-size: 340px;
+  display: flex;
+  margin: auto;
+  margin-top: 12vh;
 }
 </style>
