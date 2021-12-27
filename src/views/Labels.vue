@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <NavTop class="nav-top">标签</NavTop>
     <ol class="tags">
       <router-link
         class="tag"
@@ -37,21 +38,25 @@ export default class Labels extends mixins(TagHelper) {
 
 <style lang="scss" scoped>
 .tags {
-  background: white;
+  margin-top: 20px;
+  background-color: #eeebd8;
   font-size: 16px;
-  padding-left: 16px;
   > .tag {
     min-height: 44px;
     display: flex;
+    padding-left: 16px;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #dbd4b7;
     svg {
       width: 24px;
       height: 24px;
       margin-right: 16px;
     }
   }
+}
+.nav-top {
+  font-weight: bold;
 }
 .createTag {
   background: #767676;

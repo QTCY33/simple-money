@@ -1,10 +1,12 @@
 <template>
   <Layout>
-    <Tabs
-      class-prefix="type"
-      :data-source="recordTypeList"
-      :value.sync="type"
-    />
+    <NavTop
+      ><Tabs
+        class-prefix="type"
+        :data-source="recordTypeList"
+        :value.sync="type"
+    /></NavTop>
+
     <ol v-if="groupedList.length > 0">
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">
@@ -32,8 +34,8 @@ import Tabs from "@/components/Tabs.vue";
 import recordTypeList from "@/constants/recordTypeList";
 import dayjs from "dayjs";
 import clone from "@/lib/clone";
+import NavTop from "@/components/NavTop.vue";
 @Component({
-  
   components: { Tabs },
 })
 export default class Statistics extends Vue {
@@ -109,12 +111,20 @@ export default class Statistics extends Vue {
 
 <style lang="scss" scoped>
 ::v-deep {
-  .type-tabs-item {
-    background: white;
-    &.selected {
-      background: #c4c4c4;
-      &::after {
-        display: none;
+  .type-tabs {
+    display: flex;
+    flex-direction: row;
+    margin: -10px;
+    .type-tabs-item {
+      font-size: 25px;
+      margin: 12px;
+      &.selected {
+        font-weight: bold;
+        transition: All 0.1s ease;
+        transform: scale(1.2);
+        &::after {
+          display: none;
+        }
       }
     }
   }
@@ -132,10 +142,14 @@ export default class Statistics extends Vue {
 }
 .title {
   @extend %item;
+  margin-top: 20px;
+  border-top: 2px solid rgb(61, 56, 56);
 }
 .record {
-  background: white;
+  background: #eeebd8;
+  border-bottom: 1px solid #dbd4b7;
   @extend %item;
+  overflow-y: scroll;
 }
 .notes {
   margin-right: auto;

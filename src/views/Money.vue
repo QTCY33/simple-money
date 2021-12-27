@@ -1,7 +1,11 @@
 <template>
   <Layout class-prefix="layout">
     <NumberPad :value.sync="record.amount" @submit="saveRecord" />
-    <Tabs :data-source="recordTypeList" :value.sync="record.type" />
+    <Tabs
+      class="tabs"
+      :data-source="recordTypeList"
+      :value.sync="record.type"
+    />
     <div class="notes">
       <Notes
         field-name="备注"
@@ -10,6 +14,7 @@
       />
     </div>
     <Tags @update:value="record.tags = $event" />
+    <NavTop class="nav-top">记账</NavTop>
   </Layout>
 </template>
 
@@ -21,6 +26,7 @@ import { Component } from "vue-property-decorator";
 import Tabs from "@/components/Tabs.vue";
 import recordTypeList from "@/constants/recordTypeList";
 import Notes from "../components/Money/Notes.vue";
+import NavTop from "@/components/NavTop.vue";
 
 @Component({
   components: { NumberPad, Tags, Notes, Tabs },
@@ -59,6 +65,38 @@ export default class Money extends Vue {
 ::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
+}
+::v-deep .tabs {
+  display: flex;
+  text-align: center;
+  font-size: 24px;
+  &-item {
+    width: 50%;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &.selected {
+      color: white;
+      background: rgb(181, 178, 190);
+    }
+    &.selected::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-height: 2px;
+      background: rgb(32, 30, 30);
+    }
+  }
+}
+.tabs {
+  background: #c4cece;
+}
+.nav-top {
+  font-weight: bold;
 }
 .notes {
   padding: 5px;

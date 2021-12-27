@@ -1,8 +1,5 @@
 <template>
   <div class="tags">
-    <div class="new">
-      <button @click="createTag">新增</button>
-    </div>
     <ul class="current">
       <li
         v-for="tag in tagList"
@@ -13,6 +10,9 @@
         {{ tag.name }}
       </li>
     </ul>
+    <div class="new">
+      <button @click="createTag">新增</button>
+    </div>
   </div>
 </template>
 
@@ -48,32 +48,39 @@ export default class Tags extends mixins(TagHelper) {
   font-size: 14px;
   padding: 16px;
   display: flex;
-  flex-direction: column-reverse;
-  background: white;
+  flex-direction: column;
+  background: transparent;
   > .current {
     display: flex;
     flex-wrap: wrap;
     > li {
-      $bg: rgb(192, 185, 185);
-      background: $bg;
+      background: transparent;
+      color: #acd1bf;
+      border: 1px solid #acd1bf;
+      box-shadow: -1px -1px #acd1bf;
       height: 24px;
       line-height: 24px;
       border-radius: 12px;
-      padding: 0 6px;
+      padding: 0px 10px;
       margin-top: 10px;
       margin-right: 12px;
       &.selected {
-        background: darken($color: $bg, $amount: 20%);
-        color: white;
+        left: 1px;
+        top: 1px;
+        background: #e9da73;
+        box-shadow:none;
+        border: none;
+        color: #ffffff;
       }
     }
   }
   > .new {
+    margin-top: 20px;
     padding: 16px 0;
     button {
       background: transparent;
       border: none;
-      color: #999;
+      color: rgb(158, 120, 120);
       border-bottom: 1px solid;
       padding: 0 4px;
     }

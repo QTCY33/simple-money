@@ -49,7 +49,9 @@ export default class NumberPad extends Vue {
   }
   remove() {
     this.output = this.output.slice(0, -1);
-    this.output = "0";
+    if (this.output.length === 0) {
+      this.output = "0";
+    }
   }
   clear() {
     this.output = "0";
@@ -92,34 +94,34 @@ export default class NumberPad extends Vue {
       &.zero {
         width: 50%;
       }
-      $bg: #f2f2f2;
+      $bg:#f6f6ee ;
       &:nth-child(1) {
         background: $bg;
       }
       &:nth-child(2),
       &:nth-child(5) {
-        background: darken($color: $bg, $amount: 4%);
+        background: darken($color: $bg, $amount: 2%);
       }
       &:nth-child(3),
       &:nth-child(6),
       &:nth-child(9) {
-        background: darken($color: $bg, $amount: 8%);
+        background: darken($color: $bg, $amount: 4%);
       }
       &:nth-child(4),
       &:nth-child(7),
       &:nth-child(10) {
-        background: darken($color: $bg, $amount: 12%);
+        background: darken($color: $bg, $amount: 6%);
       }
       &:nth-child(8),
       &:nth-child(11),
       &:nth-child(13) {
-        background: darken($color: $bg, $amount: 16%);
+        background: darken($color: $bg, $amount: 8%);
       }
       &:nth-child(14) {
-        background: darken($color: $bg, $amount: 20%);
+        background: darken($color: $bg, $amount: 10%);
       }
       &:nth-child(12) {
-        background: darken($color: $bg, $amount: 24%);
+        background: darken($color: $bg, $amount: 12%);
       }
     }
   }

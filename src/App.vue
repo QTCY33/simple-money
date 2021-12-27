@@ -10,11 +10,9 @@
 body {
   font-family: $font-hei;
   line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  background: rgb(235, 233, 230);
+  background: rgb(247, 246, 238);
   font-size: 16px;
 }
-
 </style>
