@@ -24,9 +24,9 @@ nav {
   flex-direction: row;
   font-size: 12px;
   background: #3f3a3a;
-  color: rgb(255, 255, 255);
+  color: rgb(165, 160, 160);
   > .item {
-    padding: 5px 0;
+    padding: 10px 0;
     width: 33.333333%;
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@ nav {
     }
   }
   .item.selected {
-    color: rgb(141, 126, 126);
+    color: white;
   }
 }
 </style>

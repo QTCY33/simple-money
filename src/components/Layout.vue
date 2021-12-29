@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import NavTop from "./NavTop.vue";
+
 export default {
   props: ["classPrefix"],
   name: "Layout",

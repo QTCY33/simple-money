@@ -6,6 +6,9 @@
       :data-source="recordTypeList"
       :value.sync="record.type"
     />
+    <div class="createAt">
+      <Notes field-name="日期" :value.sync="record.createdAt" type="date" />
+    </div>
     <div class="notes">
       <Notes
         field-name="备注"
@@ -41,6 +44,7 @@ export default class Money extends Vue {
     notes: "",
     type: "-",
     amount: 0,
+    createdAt: new Date().toISOString(),
   };
   created() {
     this.$store.commit("fetchRecords");
@@ -70,15 +74,17 @@ export default class Money extends Vue {
   display: flex;
   text-align: center;
   font-size: 24px;
+  min-height: 58px;
   &-item {
     width: 50%;
-    height: 64px;
+    height:58px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     &.selected {
       color: white;
+      height: 58px;
       background: rgb(181, 178, 190);
     }
     &.selected::after {
@@ -87,7 +93,7 @@ export default class Money extends Vue {
       bottom: 0;
       left: 0;
       width: 100%;
-      min-height: 2px;
+      height: 2px;
       background: rgb(32, 30, 30);
     }
   }
