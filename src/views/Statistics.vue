@@ -6,7 +6,7 @@
         :data-source="recordTypeList"
         :value.sync="type"
     /></NavTop>
-    <div class="chart-wrapper" ref="chartWrapper">
+    <div v-if="groupedList.length!==0" class="chart-wrapper" ref="chartWrapper">
       <Chart class="chart" :option="chartOption" />
     </div>
     <ol v-if="groupedList.length > 0">
@@ -37,6 +37,9 @@ import recordTypeList from "@/constants/recordTypeList";
 import dayjs from "dayjs";
 import clone from "@/lib/clone";
 import Chart from "../components/Chart.vue";
+import _ from "lodash";
+import day from "dayjs";
+
 @Component({
   components: { Tabs, Chart },
 })
@@ -111,7 +114,33 @@ export default class Statistics extends Vue {
   }
   type = "-";
   recordTypeList = recordTypeList;
+  get keyValueList() {
+    const today = new Date();
+    const array = [];
+    for (let i = 0; i <= 30; i++) {
+      const dateString = day(today).subtract(i, "day").format("YYYY-MM-DD");
+      const found = _.find(this.groupedList, {
+        title: dateString,
+      });
+      array.push({
+        key: dateString,
+        value: found ? found.total : 0,
+      });
+    }
+    array.sort((a, b) => {
+      if (a.key > b.key) {
+        return 1;
+      } else if (a.key === b.key) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
+    return array;
+  }
   get chartOption() {
+    const keys = this.keyValueList.map((item) => item.key);
+    const values = this.keyValueList.map((item) => item.value);
     return {
       grid: {
         left: 0,
@@ -130,7 +159,12 @@ export default class Statistics extends Vue {
           show: false,
         },
         axisTick: { alignWithLabel: true },
-        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        axisLabel: {
+          formatter: function (value: string, index: number) {
+            return value.substring(5);
+          },
+        },
+        data: keys,
       },
       yAxis: {
         type: "value",
@@ -143,7 +177,7 @@ export default class Statistics extends Vue {
         {
           itemStyle: { color: "#acd1c0" },
           type: "line",
-          data: [1222, 321, 124, 121, 213, 123, 3214, 5, 512, 53],
+          data: values,
         },
       ],
     };
@@ -212,7 +246,7 @@ export default class Statistics extends Vue {
   overflow: hidden;
 }
 .chart {
-  width: 150%;
+  width: 400%;
   &-wrapper {
     overflow: auto;
     &::-webkit-scrollbar {

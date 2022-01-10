@@ -11,7 +11,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020
   },
-
+  global: { "RecordItem": true },
   rules: {
     "@typescript-eslint / no - inferrable - types": "off",
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

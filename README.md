@@ -1,4 +1,4 @@
-# moreny-demo
+# simple-money
 
 ## Project setup
 ```
